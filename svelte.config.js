@@ -1,7 +1,5 @@
 import adapter from '@sveltejs/adapter-auto';
 import autoprefixer from 'autoprefixer';
-import dsv from '@rollup/plugin-dsv';
-import path from 'path';
 import sveltePreprocess from 'svelte-preprocess';
 import { mdsvex } from 'mdsvex';
 import rehypeWrap from 'rehype-wrap';
@@ -12,20 +10,6 @@ export default {
   extensions: ['.svelte', '.md'],
   kit: {
     adapter: adapter(),
-    vite: {
-      plugins: [dsv()],
-      resolve: {
-        // Set alias for top-level folders in the src folder
-        alias: {
-          $actions: path.resolve('./src/actions'),
-          $components: path.resolve('./src/components'),
-          $data: path.resolve('./src/data'),
-          $functions: path.resolve('./src/functions'),
-          $stores: path.resolve('./src/stores'),
-          $styles: path.resolve('./src/styles'),
-        },
-      },
-    },
   },
   preprocess: [
     sveltePreprocess({
